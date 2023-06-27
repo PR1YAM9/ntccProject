@@ -4,14 +4,11 @@ import Navbar from './components/Navbar'
 import { Route, Routes } from "react-router-dom"
 import Home from './components/Home'
 import GenImg from './components/GenImg'
-// import ImgEx from './components/ImgEx'
-
-
 
 const App = () => {
   return (
     <>
-          <Navbar/>
+      <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/genimg" element={<GenImg />} />

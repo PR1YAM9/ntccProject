@@ -1,12 +1,12 @@
 {
-  "name": "node-hello-world-minimal",
+  "name": "imagine-ai",
   "version": "1.0.0",
-  "description": "Node.js minimal example",
+  "description": "minimal fullstack ai generation web app",
   "author": "Priyam maini",
-  "main": "app.js",
+  "main": "index.js",
   "license": "Apache-2.0",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon index.js"
   },
   "dependencies": {
     "@leap-ai/sdk": "^0.0.113",

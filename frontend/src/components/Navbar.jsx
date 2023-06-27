@@ -5,7 +5,7 @@ const Navbar = () => {
     <>
       <nav className="navbar navbar-expand-lg ">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="">
+          <Link className="navbar-brand" to="/">
             Imagine-AI
           </Link>
           <button
@@ -24,10 +24,7 @@ const Navbar = () => {
               <Link style={{color:'#FEF4E4'}} className="nav-link" aria-current="page" to="/genimg">
                 Generate IMG
               </Link>
-              <Link style={{color:'#FEF4E4'}} className="nav-link" to="/">
-                About
-              </Link>
-              <Link style={{color:'#FEF4E4'}} className="nav-link" to="/">
+              <Link style={{color:'#FEF4E4'}} target="_blank" rel="noreffer" className="nav-link" to="https://docs.tryleap.ai/reference/inferencescontroller_create-1">
                 Leap-AI
               </Link>
             </div>

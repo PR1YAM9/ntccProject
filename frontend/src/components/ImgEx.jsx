@@ -32,12 +32,12 @@ const ImgEx = () => {
   return (
     <div >
         <h2 style={{color: '#BEE56B', textAlign:'center'}}>Some AI Generated Images</h2>
-        <div class="wrapper">
+        <div className="wrapper">
         {data.map((d)=>{
             return(
-                <div class="cardEx">
+                <div key={d.img} className="cardEx">
               <img src={d.img} alt=""/>
-              <div class="info">
+              <div className="info">
                   <h1>{d.text}</h1>
                   <p>{d.para}</p>
               </div>
