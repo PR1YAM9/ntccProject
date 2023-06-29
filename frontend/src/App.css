@@ -457,3 +457,6 @@ text-transform: capitalize;
 	background-color: darkgrey;
 	outline: 1px solid slategrey;
   }
+.homeRight{
+	margin-top: -100px;
+}
