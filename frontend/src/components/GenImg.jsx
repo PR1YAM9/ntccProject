@@ -32,7 +32,6 @@ const GenImg = () => {
       if (!response.ok) {
         throw new Error('Image could not be generated');
       }
-
       const image = await response.json();
       const imageUrl = image.data;
 
