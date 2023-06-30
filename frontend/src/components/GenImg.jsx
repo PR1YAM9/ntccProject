@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 const GenImg = () => {
   const [errorMsg, setErrorMsg] = useState('');
-  // const [isLoading, setIsLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
 
   const handleSubmit = async (e) => {
@@ -18,7 +17,6 @@ const GenImg = () => {
     }
 
     try {
-      // setIsLoading(true);
       showSpinner();
 
       const response = await fetch('http://localhost:5000/generate', {
@@ -39,7 +37,6 @@ const GenImg = () => {
     } catch (error) {
       setErrorMsg(error.message);
     } finally {
-      // setIsLoading(false);
       removeSpinner()
     }
   };
