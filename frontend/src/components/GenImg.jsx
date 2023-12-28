@@ -7,27 +7,27 @@ const GenImg = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  setErrorMsg('');
-  setImageUrl('');
+    setErrorMsg('');
+    setImageUrl('');
 
-  const prompt = document.querySelector('#promptInput').value;
+    const prompt = document.querySelector('#promptInput').value;
 
-  if (prompt === '' || apiKey === '') {
-    alert('Please add both prompt text and API key');
-    return;
-  }
+    if (prompt === '' || apiKey === '') {
+      alert('Please add both prompt text and API key');
+      return;
+    }
 
-  try {
-    showSpinner();
+    try {
+      showSpinner();
 
-    const response = await fetch('http://localhost:5000/generate', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': apiKey, // Include API key in the headers
-      },
-      body: JSON.stringify({ prompt }),
-    });
+      const response = await fetch('https://fair-tan-boa-fez.cyclic.app/generate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': apiKey,
+        },
+        body: JSON.stringify({ prompt }),
+      });
 
       if (!response.ok) {
         throw new Error("Image could not be generated");
@@ -42,9 +42,16 @@ const GenImg = () => {
       removeSpinner();
     }
   };
+
+  const handleAddKey = (e) => {
+    window.location.href = "https://app.tryleap.ai/"; 
+    e.preventDefault()
+  };
+
   const showSpinner = () => {
     document.querySelector(".spinner").classList.add("show");
   };
+
   const removeSpinner = () => {
     document.querySelector(".spinner").classList.remove("show");
   };
@@ -58,18 +65,25 @@ const GenImg = () => {
           </h2>
           <input type="text" id="promptInput" />
           <br />
-          <button className="generateButton" type="submit">
-            Generate
-          </button>
-
-          <label htmlFor="apiKey">API Key:</label>
-          <input
-            type="text"
-            id="apiKey"
-            value={apiKey}
-            onChange={(e) => setApiKey(e.target.value)}
-          />
-
+          <div className="cove">
+            <div className="inner">
+              <label className="label" htmlFor="apiKey">
+                API Key:
+              </label>
+              <input
+                type="text"
+                id="apiKey"
+                value={apiKey}
+                onChange={(e) => setApiKey(e.target.value)}
+              />
+              <a  target="_blank" rel="noreferrer" href="https://app.tryleap.ai/">
+                <button className="getKey" onClick={handleAddKey}>Get Key</button>
+              </a>
+            </div>
+            <button className="generateButton" type="submit">
+              Generate
+            </button>
+          </div>
         </form>
       </div>
       <div className="image-container">

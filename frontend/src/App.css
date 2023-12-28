@@ -460,3 +460,35 @@ text-transform: capitalize;
 .homeRight{
 	margin-top: -100px;
 }
+.cove{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+}
+.label{
+	color: rgb(190, 229, 107);
+}
+#apiKey{
+	background: #252527;
+	border-style: solid;
+	font-size: 1.2rem;
+	height: 2.5rem;
+	/* width: 512px; */
+	margin-bottom: 2em;
+	color: #fff;
+}
+.getKey{
+	margin-left: 20px;
+	padding: 5px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border: 4px solid #000;
+  background: #B56FEC;
+  box-shadow: 7px 6px 0px 0px #000;
+  color: #fff;
+  color: #FEF4E4;
+font-size: 17px;
+}
