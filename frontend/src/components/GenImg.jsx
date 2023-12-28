@@ -1,34 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const GenImg = () => {
-  const [errorMsg, setErrorMsg] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
+  const [errorMsg, setErrorMsg] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [apiKey, setApiKey] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMsg('');
-    setImageUrl('');
+  setErrorMsg('');
+  setImageUrl('');
 
-    const prompt = document.querySelector('#promptInput').value;
+  const prompt = document.querySelector('#promptInput').value;
 
-    if (prompt === '') {
-      alert('Please add some text');
-      return;
-    }
+  if (prompt === '' || apiKey === '') {
+    alert('Please add both prompt text and API key');
+    return;
+  }
 
-    try {
-      showSpinner();
+  try {
+    showSpinner();
 
-      const response = await fetch('http://localhost:5000/generate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ prompt }),
-      });
+    const response = await fetch('http://localhost:5000/generate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey, // Include API key in the headers
+      },
+      body: JSON.stringify({ prompt }),
+    });
 
       if (!response.ok) {
-        throw new Error('Image could not be generated');
+        throw new Error("Image could not be generated");
       }
       const image = await response.json();
       const imageUrl = image.data;
@@ -37,21 +39,21 @@ const GenImg = () => {
     } catch (error) {
       setErrorMsg(error.message);
     } finally {
-      removeSpinner()
+      removeSpinner();
     }
   };
-  const  showSpinner=()=> {
-    document.querySelector('.spinner').classList.add('show');
-  }
-  const removeSpinner=()=> {
-    document.querySelector('.spinner').classList.remove('show');
-  }
+  const showSpinner = () => {
+    document.querySelector(".spinner").classList.add("show");
+  };
+  const removeSpinner = () => {
+    document.querySelector(".spinner").classList.remove("show");
+  };
 
   return (
     <>
       <div className="promptDiv">
         <form id="imagePrompt" onSubmit={handleSubmit}>
-          <h2 id="ImagineAnImage" style={{ color: '#BEE56B' }}>
+          <h2 id="ImagineAnImage" style={{ color: "#BEE56B" }}>
             Imagine An Image
           </h2>
           <input type="text" id="promptInput" />
@@ -59,6 +61,15 @@ const GenImg = () => {
           <button className="generateButton" type="submit">
             Generate
           </button>
+
+          <label htmlFor="apiKey">API Key:</label>
+          <input
+            type="text"
+            id="apiKey"
+            value={apiKey}
+            onChange={(e) => setApiKey(e.target.value)}
+          />
+
         </form>
       </div>
       <div className="image-container">
